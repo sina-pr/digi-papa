@@ -9,7 +9,12 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 
 const useStyle = makeStyles((theme)=>({
     root:{
-        flexGrow:'1'
+        flexGrow:'1',
+        
+    },
+    toolbar_style:{
+        paddingRight:'5px',
+        paddingLeft:'5px'
     },
    
     store: {
@@ -58,7 +63,7 @@ const Header = ({onThemeChange,dark,count,onPriceChange,value,onFillter}) => {
         
             
             <AppBar position="sticky" color='primary' className={classes.root} >
-                <Toolbar>
+                <Toolbar className={classes.toolbar_style}>
                     
                 <IconButton color="inherit" onClick={openDrawer}>
                     <MenuIcon />
