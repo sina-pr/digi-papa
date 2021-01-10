@@ -103,7 +103,7 @@ const useStyle = makeStyles((theme) => ({
     borderRadius: 2,
   },
   tech_table: {
-    marginTop: 10,
+    margin: 50,
     "&>:nth-child(odd)": {
       backgroundColor: "#8c8f8f",
     },

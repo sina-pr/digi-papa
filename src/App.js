@@ -13,9 +13,12 @@ import {
 import Main from "./component/body/main";
 import Detail from "./component/body/Detail";
 import Footer from "./component/footer/footer";
+import { useSelector } from "react-redux";
+import Cart from "./component/body/cart";
 
 function App() {
-  const [dark, setDark] = useState(false);
+  const dark = useSelector((state) => state.theme.darkTheme);
+
   const theme = createMuiTheme({
     palette: {
       type: dark ? "dark" : "light",
@@ -26,9 +29,9 @@ function App() {
     setCount(count + 1);
   };
 
-  const themeChanger = () => {
+  /*const themeChanger = () => {
     setDark(!dark);
-  };
+  };*/
   const [value, setValue] = useState([100, 1000]);
   const priceChanger = (event, newValue) => {
     setValue(newValue);
@@ -40,13 +43,12 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={theme}>
-        <Paper style={{ height: "fitContent", minHeight: "100vh" }}>
+        <Paper style={{ height: "fitContent", minHeight: "100%" }}>
           <div className="App">
             <Header
               onPriceChange={priceChanger}
               value={value}
               onFillter={fillterPrice}
-              onThemeChange={themeChanger}
               dark={dark}
               count={count}
             />
@@ -54,14 +56,17 @@ function App() {
               <Route exact path="/">
                 <Redirect to="/products" />
               </Route>
+
               <Route exact path="/products">
                 <Main fillterdPrice={fillterdPrice} sendToStore={sendIT} />
               </Route>
               <Route path="/products/:id">
                 <Detail />
               </Route>
+              <Route path="/cart">
+                <Cart />
+              </Route>
             </Switch>
-            <Footer />
           </div>
         </Paper>
       </ThemeProvider>
