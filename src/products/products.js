@@ -1,5 +1,6 @@
 const products = [
   {
+    count: 0,
     id: 1,
     available: 5,
     imageUrl: "https://i.ibb.co/TBnD0cD/404687-removebg-preview.png",
@@ -9,6 +10,7 @@ const products = [
     price: 250,
   },
   {
+    count: 0,
     id: 2,
     available: 5,
     imageUrl: "https://i.ibb.co/2yMDLDW/4470586-removebg-preview-1.png",
@@ -18,6 +20,7 @@ const products = [
     price: 830,
   },
   {
+    count: 0,
     id: 3,
     available: 2,
     imageUrl: "https://i.ibb.co/pvHqNN8/110829333-removebg-preview.png",
@@ -30,6 +33,8 @@ const products = [
     price: 70,
   },
   {
+    available: 7,
+    count: 0,
     id: 4,
     imageUrl: "https://i.ibb.co/cQQrwp8/1855893-removebg-preview.png",
     name: "SSD Slim S55",
@@ -40,6 +45,7 @@ const products = [
 ];
 export const MoreAboutProducts = [
   {
+    count: 0,
     id: 1,
     available: 5,
     imageUrl: "https://i.ibb.co/TBnD0cD/404687-removebg-preview.png",
@@ -49,6 +55,7 @@ export const MoreAboutProducts = [
     price: 250,
   },
   {
+    count: 0,
     id: 2,
     available: 5,
     imageUrl: "https://i.ibb.co/2yMDLDW/4470586-removebg-preview-1.png",
@@ -58,6 +65,7 @@ export const MoreAboutProducts = [
     price: 830,
   },
   {
+    count: 0,
     id: 3,
     available: 2,
     imageUrl: "https://i.ibb.co/pvHqNN8/110829333-removebg-preview.png",
@@ -68,6 +76,7 @@ export const MoreAboutProducts = [
     price: 70,
   },
   {
+    count: 0,
     id: 4,
     available: 4,
     imageUrl: "https://i.ibb.co/cQQrwp8/1855893-removebg-preview.png",
@@ -78,8 +87,8 @@ export const MoreAboutProducts = [
     price: 100,
   },
 ];
-export const getProcutDetail = (findId) => {
-  const product = MoreAboutProducts.find(({ id }) => id == findId);
+export const getProduct = (findId) => {
+  const product = products.find(({ id }) => id == findId);
   return product;
 };
 export default products;

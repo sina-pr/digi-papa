@@ -56,7 +56,10 @@ const useStyle = makeStyles((theme) => ({
 
 const Header = ({ dark, onPriceChange, value, onFillter }) => {
   const dispatch = useDispatch();
-  const count = useSelector((state) => state.badgeNumber.count);
+  const addedProducts = useSelector(
+    (state) => state.shoppingCart.addedProducts
+  );
+  const lengthOfArray = addedProducts.length;
   const classes = useStyle();
   const [open, setOpen] = useState(false);
   const openDrawer = () => {
@@ -134,7 +137,7 @@ const Header = ({ dark, onPriceChange, value, onFillter }) => {
         </Typography>
         <Link to="/cart">
           <IconButton style={{ color: "white" }}>
-            <Badge badgeContent={count} color="secondary">
+            <Badge badgeContent={lengthOfArray} color="secondary">
               <StorefrontIcon />
             </Badge>
           </IconButton>

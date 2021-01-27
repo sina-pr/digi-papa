@@ -19,6 +19,12 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { getProcutDetail, MoreAboutProducts } from "./../../products/products";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../slices/shoppingCart";
+import {
+  getCurrentProduct,
+  decrimentOneAvai,
+} from "../../slices/currentProduct";
 const useStyle = makeStyles((theme) => ({
   root: {
     marginTop: 20,
@@ -114,11 +120,17 @@ const useStyle = makeStyles((theme) => ({
 const Detail = () => {
   let { id } = useParams();
   const styles = useStyle();
-  const [product, setProduct] = useState({});
+
+  const dispatch = useDispatch();
+  const sendToStore = (item) => {
+    dispatch(addToCart(item));
+    dispatch(decrimentOneAvai());
+  };
+  const product = useSelector((state) => state.currentProduct.product);
   useEffect(() => {
-    const item = getProcutDetail(id);
-    setProduct(item);
+    dispatch(getCurrentProduct(id));
   }, []);
+  console.log(product);
   return (
     <Container className={styles.root}>
       {product ? (
@@ -147,13 +159,27 @@ const Detail = () => {
               <Typography color="secondary" className={styles.price_txt}>
                 {product.price}$
               </Typography>
-              <Button
-                color="primary"
-                variant="contained"
-                className={styles.buy_btn}
-              >
-                Buy now!
-              </Button>
+              {product.available > 0 ? (
+                <Button
+                  color="primary"
+                  variant="contained"
+                  className={styles.buy_btn}
+                  onClick={() => {
+                    sendToStore(product);
+                  }}
+                >
+                  Add to cart!
+                </Button>
+              ) : (
+                <Button
+                  color="primary"
+                  variant="contained"
+                  disabled
+                  className={styles.buy_btn}
+                >
+                  Add to cart!
+                </Button>
+              )}
             </div>
           </Card>
           <Card className={styles.deli_card}>

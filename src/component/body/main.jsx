@@ -26,7 +26,8 @@ const useStyle = makeStyles({
   root: {
     marginTop: "20px",
     marginBottom: 10,
-    minHeight: "100%",
+    minHeight: "100vh",
+    height: "fit-content",
   },
   papers: {
     textAlign: "center",
@@ -145,7 +146,7 @@ const Main = ({ fillterdPrice }) => {
                     Add
                   </Button>*/}
 
-                  {p.available == 0 ? (
+                  {/*p.available == 0 ? (
                     <Button variant="outlined" disabled>
                       Add
                     </Button>
@@ -161,13 +162,15 @@ const Main = ({ fillterdPrice }) => {
                     >
                       Add
                     </Button>
-                  )}
+                  )*/}
 
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/products/${p.id}`}
                   >
-                    <Button color="primary">More</Button>
+                    <Button variant="outlined" color="primary">
+                      More
+                    </Button>
                   </Link>
                 </CardActions>
               </Card>
