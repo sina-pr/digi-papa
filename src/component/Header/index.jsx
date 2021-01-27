@@ -101,12 +101,20 @@ const Header = ({ dark, onPriceChange, value, onFillter }) => {
           </div>
           <Divider />
           <List>
-            <ListItem button className={classes.list}>
-              Home
-            </ListItem>
-            <ListItem button className={classes.list}>
-              Contact
-            </ListItem>
+            <Link style={{ textDecoration: "none" }} to="/">
+              <ListItem button className={classes.list}>
+                Home
+              </ListItem>
+            </Link>
+
+            <a
+              href="https://www.t.me/ultr4Ping"
+              style={{ textDecoration: "none" }}
+            >
+              <ListItem button className={classes.list}>
+                Contact
+              </ListItem>
+            </a>
             <ListItem button className={classes.list}>
               About
             </ListItem>
